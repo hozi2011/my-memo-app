@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立て替えメモアプリ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        #project-management, #summary, #settlementResults {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="date"], input[type="number"], select, button {
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .input-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>立て替えメモ</h1>
+    <div id="project-management">
+        <h2>案件管理</h2>
+        <input type="text" id="projectName" placeholder="新しい案件名を入力">
+        <button id="createProjectButton">案件作成</button>
+        <select id="projectSelector"></select>
+        <button id="loadProjectButton">案件読み込み</button>
+        <button id="deleteProjectButton">案件削除</button>
+    </div>
+    <hr>
+    <div class="input-container">
+        <label for="memoDate">日付:</label>
+        <input type="date" id="memoDate">
+        <label for="memoPayer">支払い者:</label>
+        <input type="text" id="memoPayer">
+        <label for="memoAmount">金額:</label>
+        <input type="number" id="memoAmount" step="100">
+        <label for="memoInput">メモ:</label>
+        <input type="text" id="memoInput" placeholder="メモを入力">
+        <button id="addButton">追加</button>
+        <button id="settleButton">精算する</button>
+        <button id="exportButton">CSVとしてエクスポート</button>
+    </div>
+
+    <table id="memoTable">
+        <thead>
+            <tr>
+                <th>日付</th>
+                <th>支払い者</th>
+                <th>金額</th>
+                <th>メモ</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="memoList">
+        </tbody>
+    </table>
+
+    <div id="summary">
+        <h2>集計</h2>
+        <div id="totalDisplay"></div>
+    </div>
+    
+    <div id="settlementResults"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
